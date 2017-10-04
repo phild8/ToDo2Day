@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTask(View v)
     {
-        //TODO: Fix the addTask so it does not return -1 when check once created.
+        // TODO: Fix the addTask so it does not return -1 when check once created.
+        // TODO: Check Java2 folder for IC14 Video games on how to fix.
 
         // Check to see if the description is empty or null
         String description = mDescriptionEditText.getText().toString(); // to string because getText() charSequence
