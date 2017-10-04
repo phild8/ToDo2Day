@@ -29,6 +29,12 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
     private int mResourceId;
     private List<Task> mTaskList;
 
+    /**
+     * A new adapter to link the list and the database.
+     * @param context The layout to connect with.
+     * @param resource The Task object item.
+     * @param objects A lis of Task object items.
+     */
     public TaskListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Task> objects) {
         super(context, resource, objects);
         mContext = context;
@@ -36,6 +42,13 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         mTaskList = objects;
     }
 
+    /**
+     * Embeds the Task object so the MainActivity can access it and see if it has been checked or not
+     * @param position The position of the Task object insie of the list.
+     * @param convertView Null.
+     * @param parent The ViewGroup class.
+     * @return the Task Object if it has been checked or not.
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -50,6 +63,10 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         CheckBox selectedCheckBox =  view.findViewById(R.id.isDoneCheckBox);
         selectedCheckBox.setChecked(selectedTask.isDone());
         selectedCheckBox.setText(selectedTask.getDescription());
+
+        // Tag = invisible locker behind each view (store anything there)
+        selectedCheckBox.setTag(selectedTask);
+
         return view;
     }
 }

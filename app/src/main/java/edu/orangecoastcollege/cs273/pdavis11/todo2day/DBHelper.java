@@ -101,6 +101,16 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Deletes the who database table and clears and closes the file.
+     */
+    public void deleteAllTask()
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(DATABASE_TABLE, null, null);
+        db.close();
+    }
+
+    /**
      *  Updates some or all information about at task in the DB
      *
      * @param taskToEdit the task to update
